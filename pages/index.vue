@@ -4,6 +4,7 @@
       <search v-model="query" class="search" />
       <div v-for="char in filteredCharacters" :key="char.id">
         {{ char.name }}
+        {{ char.distance }}
       </div>
     </div>
   </section>
@@ -11,6 +12,7 @@
 
 <script>
 import Search from '~/components/SearchBar.vue'
+import levenshteinDistance from '~/helpers/levenshteinDistance.js'
 
 export default {
   components: {
@@ -25,19 +27,28 @@ export default {
   },
   computed: {
     filteredCharacters: function() {
-      const regex = new RegExp(
-        `\b?${Array.from(this.query).join('.*')}\b?`,
-        'gi'
-      )
-      return this.characters.filter(item => item.name.match(regex))
+      const { query, characters } = this
+      const regexPattern = `\b?${Array.from(query).join('.*')}\b?`
+      const regex = new RegExp(regexPattern, 'gi')
+
+      return characters
+        .filter(item => item.name.match(regex))
+        .map(char => ({
+          ...char,
+          distance: levenshteinDistance(this.query, char.name)
+        }))
+        .sort((a, b) => a.distance - b.distance)
     }
   },
-  created: async function() {
+  async created() {
     const {
       data: { results, info }
     } = await this.$axios.get(`https://rickandmortyapi.com/api/character/`)
     this.characters = results
     this.pageInfo = info
+  },
+  methods: {
+    levenshteinDistance: levenshteinDistance
   }
 }
 </script>
