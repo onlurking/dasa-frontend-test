@@ -20,6 +20,17 @@ export default {
     '@nuxtjs/axios'
   ],
 
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'https://rickandmortyapi.com/api/character/',
+      pathRewrite: { '^/api/': '' }
+    }
+  },
+
   /*
    ** Build configuration
    */
