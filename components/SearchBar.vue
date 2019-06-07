@@ -11,6 +11,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    value: {
+      type: String,
+      default: ''
+    }
+  }
+}
+</script>
+
 <style lang="postcss" scoped>
 .search {
   display: flex;
@@ -28,14 +39,3 @@
   padding: 4px 8px;
 }
 </style>
-
-<script>
-export default {
-  props: {
-    value: {
-      type: String,
-      default: ''
-    }
-  }
-}
-</script>
