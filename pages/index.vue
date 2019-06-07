@@ -2,21 +2,24 @@
   <section class="container">
     <div>
       <search v-model="query" class="search" />
-      <div v-for="char in filteredCharacters" :key="char.id">
-        {{ char.name }}
-        {{ char.distance }}
+      <div class="results">
+        <div v-for="char in filteredCharacters" :key="char.id">
+          <CharacterCard :char="char" />
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Search from '~/components/SearchBar.vue'
-import levenshteinDistance from '~/helpers/levenshteinDistance.js'
+import Search from '~/components/SearchBar'
+import CharacterCard from '~/components/CharacterCard'
+import levenshteinDistance from '~/helpers/levenshteinDistance'
 
 export default {
   components: {
-    Search
+    Search,
+    CharacterCard
   },
   data: function() {
     return {
@@ -57,5 +60,13 @@ export default {
 .search {
   margin-bottom: 32px;
   margin-top: 32px;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 </style>
