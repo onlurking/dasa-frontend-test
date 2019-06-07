@@ -15,20 +15,18 @@
 import Search from '~/components/SearchBar'
 import CharacterCard from '~/components/CharacterCard'
 import levenshteinDistance from '~/helpers/levenshteinDistance'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {
     Search,
     CharacterCard
   },
-  data: function() {
-    return {
-      query: '',
-      characters: [],
-      pageInfo: {}
-    }
-  },
+  data: () => ({
+    query: ''
+  }),
   computed: {
+    ...mapState(['characters']),
     filteredCharacters: function() {
       const { query, characters } = this
       const regexPattern = `\b?${Array.from(query).join('.*')}\b?`
@@ -43,15 +41,12 @@ export default {
         .sort((a, b) => a.distance - b.distance)
     }
   },
-  async created() {
-    const {
-      data: { results, info }
-    } = await this.$axios.get(`https://rickandmortyapi.com/api/character/`)
-    this.characters = results
-    this.pageInfo = info
+  created() {
+    this.populateCharacters()
   },
   methods: {
-    levenshteinDistance: levenshteinDistance
+    levenshteinDistance: levenshteinDistance,
+    ...mapActions(['populateCharacters'])
   }
 }
 </script>
