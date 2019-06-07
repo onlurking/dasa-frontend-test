@@ -14,7 +14,7 @@ export const actions = {
   async populateCharacters({ commit }) {
     const {
       data: { results }
-    } = await this.$axios.get('/api/')
+    } = await this.$axios.get('https://rickandmortyapi.com/api/character/')
 
     commit('setCharacters', results)
   }
