@@ -2,6 +2,7 @@
   <div class="search">
     <input
       type="text"
+      autoFocus
       :value="value"
       class="search__field"
       placeholder="search characters"
