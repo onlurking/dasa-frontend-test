@@ -12,6 +12,7 @@ The application logic relies on the [store](https://github.com/onlurking/dasa-fr
 
 - `assets/css/reset.css` provides the CSS reset for browser consistency.
 - `components/` have the application components, named the **navbar**, **searchbar**, and the characters **card**.
+- `cypress/` should have End to End [Cypress](https://cypress.io) tests, features fixtures and mock.
 - `helpers/` provides generic javascript functions, it only have the `levenshteinDistance.js` which is a [algorithm](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/string/levenshtein-distance) that calculates the distance from two strings, is used in this project because the string `"lince"` is more similar to `"Abradolf Lincler"` than `"Abadango Cluster Princess"` for example.
 - `layouts/` provides a default template for all the pages.
 - `pages/` contains all the application pages(for now it only have index).
@@ -34,4 +35,8 @@ $ yarn run generate
 # build for production and launch server
 $ yarn run build
 $ yarn start
+
+# run e2e tests
+$ yarn e2e
+
 ```
