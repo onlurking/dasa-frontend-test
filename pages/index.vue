@@ -3,7 +3,7 @@
     <div>
       <search v-model="query" class="search" />
       <div class="results">
-        <div v-for="char in filteredCharacters" :key="char.id">
+        <div v-for="char in filterCharactersBy(query)" :key="char.id">
           <CharacterCard :char="char" />
         </div>
       </div>
@@ -14,8 +14,7 @@
 <script>
 import Search from '~/components/SearchBar'
 import CharacterCard from '~/components/CharacterCard'
-import levenshteinDistance from '~/helpers/levenshteinDistance'
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -27,25 +26,12 @@ export default {
   }),
   computed: {
     ...mapState(['characters']),
-    filteredCharacters: function() {
-      const { query, characters } = this
-      const regexPattern = `\b?${Array.from(query).join('.*')}\b?`
-      const regex = new RegExp(regexPattern, 'gi')
-
-      return characters
-        .filter(item => item.name.match(regex))
-        .map(char => ({
-          ...char,
-          distance: levenshteinDistance(this.query, char.name)
-        }))
-        .sort((a, b) => a.distance - b.distance)
-    }
+    ...mapGetters(['filterCharactersBy'])
   },
   created() {
     this.populateCharacters()
   },
   methods: {
-    levenshteinDistance: levenshteinDistance,
     ...mapActions(['populateCharacters'])
   }
 }
