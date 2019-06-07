@@ -40,3 +40,11 @@ $ yarn start
 $ yarn e2e
 
 ```
+
+## Roadmap
+
+- [x] [Figma Design](https://www.figma.com/file/PXCF8qcmalLIQhjVFDAPVvo9/Dasa)
+- [x] Advanced search
+- [x] Testing
+  - [ ] Unit tests (Jest) [doc](https://vue-test-utils.vuejs.org/guides/using-with-vuex.html)
+  - [x] End to End tests (Cypress)
