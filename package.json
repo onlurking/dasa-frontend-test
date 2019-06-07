@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Dasa code interview",
   "author": "Diogo Felix",
+  "homepage": "https://github.com/onlurking/dasa-frontend-test",
+  "license": "BSD-2-Clause",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
