@@ -26,7 +26,9 @@
 
 Cypress.Commands.add('seedAndVisit', (seedData = 'fixture:minimal') => {
   cy.server()
-  cy.route('GET', '/api/', seedData).as('load')
+  cy.route('GET', 'https://rickandmortyapi.com/api/character/', seedData).as(
+    'load'
+  )
   cy.visit('/')
   cy.wait('@load')
 })
