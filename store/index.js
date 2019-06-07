@@ -10,6 +10,16 @@ export const mutations = {
   }
 }
 
+export const actions = {
+  async populateCharacters({ commit }) {
+    const {
+      data: { results }
+    } = await this.$axios.get(`https://rickandmortyapi.com/api/character/`)
+
+    commit('setCharacters', results)
+  }
+}
+
 export const getters = {
   filterCharactersBy: state => query => {
     const regexPattern = `\b?${Array.from(query).join('.*')}\b?`
@@ -21,14 +31,5 @@ export const getters = {
         distance: levenshteinDistance(query, char.name)
       }))
       .sort((a, b) => a.distance - b.distance)
-  }
-}
-export const actions = {
-  async populateCharacters({ commit }) {
-    const {
-      data: { results }
-    } = await this.$axios.get(`https://rickandmortyapi.com/api/character/`)
-
-    commit('setCharacters', results)
   }
 }
