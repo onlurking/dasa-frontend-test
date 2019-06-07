@@ -4,7 +4,7 @@
       <search v-model="query" class="search" />
       <div class="results">
         <div v-for="char in filterCharactersBy(query)" :key="char.id">
-          <CharacterCard :char="char" />
+          <characterCard :char="char" />
         </div>
       </div>
     </div>
