@@ -12,13 +12,14 @@ The application logic relies on the [store](https://github.com/onlurking/dasa-fr
 
 - `assets/css/reset.css` provides the CSS reset for browser consistency.
 - `components/` have the application components, named the **navbar**, **searchbar**, and the characters **card**.
-- `cypress/` should have End to End [Cypress](https://cypress.io) tests, features fixtures and mock.
-- `helpers/` provides generic javascript functions, it only have the `levenshteinDistance.js` which is a [algorithm](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/string/levenshtein-distance) that calculates the distance from two strings, is used in this project because the string `"lince"` is more similar to `"Abradolf Lincler"` than `"Abadango Cluster Princess"` for example.
+- `helpers/` provides generic javascript functions. There you'll find the `levenshteinDistance.js` which is a [algorithm](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/string/levenshtein-distance) that calculates the distance for two strings, is used for sorting the results¹.
 - `layouts/` provides a default template for all the pages.
 - `pages/` contains all the application pages(for now it only have index).
 - `static/` folder have all the static files, it only have the logo image.
 - `store/` have all the data and the logic of the application.
-- `test/` contains all the application test, is currently **WIP**.
+- `tests/` contains all the tests, `e2e` folder have [Cypress](https://cypress.io/) End to End tests, the `unit` folder contain [Jest](https://jestjs.io) unit tests for functions.
+
+¹ eg. the string `"lince"` is more similar to `"Abradolf Lincler"` than `"Abadango Cluster Princess"` so it will be displayed first.
 
 ## Project Setup
 
@@ -40,6 +41,12 @@ $ yarn start
 $ yarn e2e
 
 ```
+
+## Styleguide
+
+Javascript is linted by [eslint](https://eslint.org/docs/user-guide/getting-started) with the [JavaScript Standard Style](https://standardjs.com) rules. <br>
+CSS is linted by [stylelint](https://stylelint.io) with [lintheus](https://github.com/onlurking/stylelint-config-lintheus) rules, which is based on my former co-worker 😂👌. <br>
+Git commits follow the [semantic commit messages](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716).
 
 ## Roadmap
 
