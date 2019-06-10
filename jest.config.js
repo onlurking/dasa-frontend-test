@@ -12,6 +12,7 @@ module.exports = {
   },
   collectCoverage: true,
   coverageDirectory: '<rootDir>/tests/unit/coverage',
+  coverageReporters: ['html', 'text-summary'],
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue'
