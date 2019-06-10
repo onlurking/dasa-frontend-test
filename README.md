@@ -37,9 +37,14 @@ $ yarn run generate
 $ yarn run build
 $ yarn start
 
+# run unit tests
+$ yarn unit
+
 # run e2e tests
 $ yarn e2e
 
+# run all tests
+$ yarn test
 ```
 
 ## Styleguide
