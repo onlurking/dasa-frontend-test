@@ -12,9 +12,8 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "e2e": "cypress run",
-    "cypress": "cypress open",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "unit": "jest",
+    "test": "yarn unit && yarn e2e"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
