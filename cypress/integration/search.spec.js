@@ -2,17 +2,17 @@ describe('Search characters', () => {
   beforeEach(() => {
     cy.seedAndVisit('fixture:complete')
   })
-  it('Visit the app', () => {
+  it('Should visit the app', () => {
     cy.focused().should('have.class', 'search__field')
   })
 
-  it('Search for Rick', () => {
+  it('Should search for Rick and find 4 results', () => {
     const searchValue = 'rick'
     cy.get('.search__field').type(searchValue)
     cy.get('.results > div > .card').should('have.length', 4)
   })
 
-  it('Found nothing', () => {
+  it('Should search for "whatever" and find nothing', () => {
     const searchValue = 'whatever'
     cy.get('.search__field').type(searchValue)
     cy.get('.results > div > .card').should('not.exist')
