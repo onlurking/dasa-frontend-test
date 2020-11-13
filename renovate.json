@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "rangeStrategy": "pin",
   "packageRules": [{
     "automerge": true
   }]
